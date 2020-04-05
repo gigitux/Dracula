@@ -16,9 +16,8 @@ fn build_ui(application: &gtk::Application) {
     window.set_border_width(10);
     window.set_position(gtk::WindowPosition::None);
     window.set_default_size(350, 70);
-
-    let split_pane = ui::render_ui();
-    window.add(&split_pane);
+    let test = ui::render_ui();
+    window.add(&test);
     window.show_all();
 }
 
