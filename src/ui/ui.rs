@@ -10,23 +10,20 @@ pub fn render_ui() -> gtk::Box {
     let renderer = CellRendererPixbuf::new();
     let icon = TreeViewColumn::new();
     let name = TreeViewColumn::new();
+    let hello_world: &str = "Hello, World!";
 
     icon.set_title("Picture");
     name.set_title("name");
-
     icon.pack_start(&renderer, false);
-
     icon.add_attribute(&renderer, "pixbuf", 0);
-
     let renderer2 = CellRendererText::new();
     icon.pack_start(&renderer2, true);
-
     right_tree.append_column(&icon);
     right_tree.append_column(&name);
     right_tree.set_model(Some(&right_store));
-    right_tree.set_headers_visible(true);
 
-    // display the panes
+    right_store.insert_with_values(None, None, &[0, 1], &[&hello_world, &hello_world]);
+    right_tree.set_headers_visible(true);
 
     let split_pane = gtk::Box::new(Orientation::Horizontal, 100);
 
